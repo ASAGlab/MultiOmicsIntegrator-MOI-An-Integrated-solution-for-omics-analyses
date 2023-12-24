@@ -1,0 +1,135 @@
+ 
+genes : false
+mirna : false
+lipids: false
+ridder_alone: false
+## Boilerplate options
+outdir : '/home/bianca/testresultscsv/'
+ 
+#isoforms #########################################/
+isoforms : true
+sra_isoforms: false
+
+input_isoforms   : "/${projectDir}//assets/samplesheet_isoforms.csv"
+
+featurecounts_group_type_isoforms: 'gene_biotype'
+gencode_isoforms : true
+
+
+
+
+fasta_isoforms   : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz'
+transcript_fasta_isoforms: '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz'
+gtf_isoforms : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz'
+
+
+
+#/ run from directory of quant.sf ##########/
+#fasta_isoforms   : '/home/bianca/isoforms/example_isoform_nt.fasta.gz'
+#transcript_fasta_isoforms: '/home/bianca/isoforms/example_isoform_nt.fasta.gz'
+#gtf_isoforms : '/home/bianca/isoforms/example.gtf.gz'
+#salmonsamplesinfo_isoforms  : '/home/bianca/isoforms/design_matrix.txt'
+#salmon_input_path_isoforms  : '/home/bianca/isoforms/test/' # change this if you performed the analysis outside
+#  fasta_salmon_isoforms   : '/home/bianca/isoforms/example_isoform_nt.fasta'
+
+#skip_qc_isoforms: true
+#skip_alignment_isoforms : true
+#skip_pseudo_alignment_isoforms  : true
+##############################
+
+skip_qc_isoforms: true
+skip_alignment_isoforms : true
+skip_pseudo_alignment_isoforms  : true
+
+
+#salmonDirIso: '/home/bianca/park_prot_re/salmon_isoforms/'  # change this for your own salmon outputs  or should be whole directory where the pipeline outputs the results
+salmonDirIso: '/home/bianca/park_prot_re/salmon_isoforms/'
+#isoforms isoSwitch
+isopart2reduceToSwitchingGenes  : false
+topisoforms : true
+isoformstosee   : 'IMMT'
+#isoformstosee   : '"PVALB","VGF","PCP4L1","ATPIF1","CPLX1","IMMT","AIF1L","AQP1","CD44","HBA1","IGHM"' #'GENES'
+
+saturn_run  : false
+saturn_fdr  : 0.05
+saturn_fc   : 0.1
+dexseqpval  : 0.05
+dexseqfdr   : 0.0001
+
+aligner_isoforms: 'salmon' # 'star', 'hisat2'
+pseudo_aligner_isoforms : 'salmon'
+
+salmon_index_isoforms   : '/home/bianca/gencode2/salmon/'
+#salmon_index_isoforms   : null
+extra_salmon_quant_args_iso  : null
+
+
+
+skip_preseq_isoforms: true
+bbsplit_fasta_list_isoforms : null
+save_bbsplit_reads  : false
+skip_bbsplit_isoforms   : true
+skip_markduplicates_isoforms: true
+star_index_isoforms : null
+hisat2_index_isoforms   : null
+skip_markduplicates_isoforms: true
+skip_stringtie_isoforms : true
+
+
+
+#salmonsamplesinfo_isoforms  : '/home/bianca/samplesinfo/samplesinfo2_isoforms.txt'  # change this for salmon outputs
+#salmonsamplesinfo_isoforms  : '/home/bianca/propertest/sample.txt'
+
+#/ mompreprocess for isoforms - not yet utilized
+mom_filt_method_isoforms: "filterByExp"  #filterByExp filterCustom
+mom_filt_cutoff_isoforms: 0
+mom_norm_method_isoforms: "none" # calncNorm quantile
+mom_batch_method_isoforms   : "com"
+mom_batch_condition_isoforms: "condition"   # which is the condition of interest, must be present in columns of sample info
+mom_batch_batch_isoforms: "batch"   # which is the batch, must be present in columns of sample info
+
+# proteins
+
+proteins:  true
+count_matrix_proteins: '${projectDir}/assets/proteins.txt'
+#samplesInfo_proteins: '/home/bianca/MOM/nfmom/assets/samplesheet_isoforms.csv'
+input_proteins: '/home/bianca/MOM/nfmom/assets/samplesheet_proteins.csv'
+
+mom_prot_change_anot: false
+mom_prot_filt_method:  "filterByExp" #"none" #
+mom_prot_filt_cutoff: 0
+mom_prot_norm_method: "none" # "calcNorm"
+mom_prot_norm_condition: "condition"
+mom_prot_norm_treatment: "batch"
+mom_prot_batch_method: "com"
+mom_prot_batch_condition: "condition"
+mom_prot_batch_batch: "batch"
+
+alg_proteins: "rp" # 'edger'
+runRank: true
+
+batchdeseq2_proteins: false
+deseqFormula_proteins: "~0 + condition"
+con1_proteins: "parkinson"
+con2_proteins: "control"
+
+dgergroupingfactor_proteins: "condition"
+edgerformulamodelmatrix_proteins: "~0 + condition"
+edgercontrasts_proteins: "parkinson-control"
+
+
+#clusterprofiler
+features :  null
+alg:  "rp"
+genes_genespval  :  0.1
+mirna_genespval  :  0.1
+proteins_genespval   :  0.1
+lipids_genespval :  0.1
+
+#MCIA
+runmcia :  true
+pathmcia:  "/home/bianca/testresultscsv/mcia/" # should of the format complete output directory/mcia
+#samplesinfomcia :  '/home/bianca/mom_lipids_sampleinfo.txt'
+samplesinfomcia :  '/home/bianca/MOM/nfmom/assets/samplesheet_isoforms.csv'
+mcia_a1lim  :  '0, Inf'
+mcia_a2lim  :  '-Inf, 0'

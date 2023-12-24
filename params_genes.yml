@@ -1,0 +1,72 @@
+
+## Boilerplate options
+isoforms : false
+sra_isoforms : false
+sra_mirna : false
+mirna : false
+lipids: false
+ridder_alone: false
+runmcia : false
+outdir: 'testresultsgenes'
+genome                     : 'GRCh38'
+gencode                    : true // these need to be changes in modules.config
+igenomes_base              : 's3://ngi-igenomes/igenomes'
+igenomes_ignore            : true
+
+#genes
+
+genes   : true
+sra_genes : false
+
+input_genes                     : "${projectDir}/assets/samplesheet_genes.csv"
+
+gencode_genes                   : true
+featurecounts_group_type_genes  : 'gene_biotype'
+fasta_genes                     : '/home/bianca/gencode2/GRCh38.primary_assembly.genome.fa.gz'
+transcript_fasta_genes          : '/home/bianca/gencode2/gencode.v44.transcripts.fa.gz'
+gtf_genes                       : '/home/bianca/gencode2/gencode.v44.annotation.gtf.gz'
+
+skip_qc_genes                   : true
+skip_preseq_genes               : true
+skip_markduplicates_genes       : true
+skip_pseudo_alignment_genes     : true
+  
+skip_alignment_genes            : true
+pseudo_aligner_genes            : 'salmon'
+
+   
+aligner_genes                   : null // 'star', 'hisat2'
+star_index_genes               : null
+hisat2_index_genes              : null
+skip_markduplicates_genes       : true
+skip_stringtie_genes            : true
+   
+salmon_index_genes            : null
+#//salmon_index_genes              : '/home/bianca/gencode2/salmon/'
+salmonDirGenes                  : 'testresultsgenes/genes/salmon_genes/'  # change this for salmon outputs format: outdir/genes/salmon_genes
+    
+extra_salmon_quant_args_genes    : null
+   
+
+count_matrix_genes  : '${projectDir}/assets/genes.txt'
+
+mom_change_anot_genes   : true 
+mom_filt_method_genes   : "filterByExp"  #filterByExp filterCustom
+mom_filt_cutoff_genes   : 0
+mom_norm_method_genes   : "none" # calncNorm quantile
+mom_norm_condition_genes   : "treatment"   # must be columns in samples info 
+mom_norm_treatment_genes   : "replicate"   # must be columns in samples info 
+mom_batch_method_genes  : "com"
+mom_batch_condition_genes   : "treatment" # which is the condition of interest, must be present in columns of sample info
+mom_batch_batch_genes   : "replicate"   # which is the batch, must be present in columns of sample info
+
+alg_genes   : 'rp' # deseq2, edger  
+
+batchdeseq2_genes   : false
+deseqFormula_genes  : "~0 + condition"  # batch and condition have to be column names in deseq2 samlesinfo
+con1_genes : "mkc"   # deseq2, has to be cell in samplesinfo
+con2_genes : "dmso"  # deseq2, has to be cell in samplesinfo
+
+dgergroupingfactor_genes:  "treatment" 
+edgerformulamodelmatrix_genes   :  "~0 + treatment" 
+edgercontrasts_genes: "TNBC-non_TNBC"  
