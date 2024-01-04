@@ -8,24 +8,20 @@ process IDS_TO_STRING {
         'quay.io/biocontainers/python:3.9--1' }"
 
     input:
-    someChannel
+    cha
     output:
-    idList
+    idl
 
     script:
     def getIdsFromTuples(channel) {
-    // Initialize an empty list to store the ids
         def ids = []
-    // Iterate through the tuples in the channel
         channel.each { tuple ->
-        // Add the id of the current tuple to the list
             ids << tuple.id
     }
-        // Join the list of ids into a single string
         return ids.join(' ')
     }
     """
-    idList = getIdsFromTuples(someChannel)
+    idl = getIdsFromTuples(cha)
     """
 
 }
