@@ -1,5 +1,5 @@
 name: gridd
-description: Convert gene names to fasta sequences with biomaRt
+description: Predict if a RNA sequence will form recognizable substrate for IRE1.
 keywords:
   - RNA secondary structure
   - pattern
