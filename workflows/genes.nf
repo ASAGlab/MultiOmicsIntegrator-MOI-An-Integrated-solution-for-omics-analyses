@@ -61,8 +61,8 @@ if(params.genes){
 // Read in ids from --input file
 Channel
     .from(file(params.input_genes, checkIfExists: true))
-    .splitCsv(header:true, sep:',', strip:true)
-    .map { it[0] }
+    .splitCsv(header:true, sep:'', strip:true)
+    .map { it.sample }
     .unique()
     .set { ch_ids_genes}
 
