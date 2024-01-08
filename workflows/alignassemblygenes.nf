@@ -172,7 +172,7 @@ workflow ALIGNASSEMBLYGENES {
         ch_versions = ch_versions.mix(QUANTIFY_SALMON_GENES.out.versions)
         ch_salmon_results = QUANTIFY_SALMON_GENES.out.results.collect{it[1]}
         ch_salmon_fasta   = PREPARE_GENOME.out.salmon_fasta
-        SALMON_TXIMPORT_GENES (params.salmonDirGenes, params.samplesInfo_genes, ch_gtf_genes, ch_salmon_results)
+        SALMON_TXIMPORT_GENES (params.salmonDirGenes, params.input_genes, ch_gtf_genes, ch_salmon_results)
         ch_versions = ch_versions.mix(SALMON_TXIMPORT_GENES.out.versions)
         counts_gene_tximport                   = SALMON_TXIMPORT_GENES.out.counts
         counts_from_abundance_tximport         = SALMON_TXIMPORT_GENES.out.countsfromabundance
