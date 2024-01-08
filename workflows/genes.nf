@@ -80,7 +80,7 @@ workflow GENES {
     }
 
     if(params.genes){
-        if (!params.skip_alignment){
+        if (!params.skip_alignment_genes){
             if(!params.skip_qc_genes){
                 QUALITYCONTROL (ch_input_genes, params.ribo_database_manifest, params.bbsplit_fasta_list_genes)
                 ALIGNASSEMBLYGENES (QUALITYCONTROL.out.filtered_reads)
