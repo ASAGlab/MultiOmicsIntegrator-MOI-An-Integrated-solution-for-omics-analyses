@@ -175,7 +175,7 @@ workflow ALIGNASSEMBLYMIRNA {
         ch_versions = ch_versions.mix(QUANTIFY_SALMON_MIRNA.out.versions)
         ch_salmon_results = QUANTIFY_SALMON_MIRNA.out.results.collect{it[1]}
         ch_salmon_fasta   = PREPARE_GENOME.out.salmon_fasta
-        SALMON_TXIMPORT_MIRNA (params.salmonDirmiRNA, params.samplesInfo_mirna, ch_gtf_mirna, ch_salmon_results)
+        SALMON_TXIMPORT_MIRNA (params.salmonDirmiRNA, params.input_mirna, ch_gtf_mirna, ch_salmon_results)
         //SALMON_TXIMPORT_MIRNA (params.salmonDirmiRNA, params.salmonsamplesinfomirna, ch_gtf_mirna, ch_salmon_fasta)
         ch_versions = ch_versions.mix(SALMON_TXIMPORT_MIRNA.out.versions)
         counts_gene_tximport                   = SALMON_TXIMPORT_MIRNA.out.counts
