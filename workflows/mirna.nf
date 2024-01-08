@@ -73,7 +73,6 @@ workflow MIRNA {
                 
                 DEA("mirna",PREPROCESS_MATRIX.out.ch_count_matrix, params.input_mirna,
                 params.alg_mirna, 
-                params.cols_mirna , params.rows_mirna, 
                 params.batchdeseq2_mirna, params.deseqFormula_mirna,params.con1_mirna,params.con2_mirna, 
                 params.dgergroupingfactor_mirna, params.edgerformulamodelmatrix_mirna, params.edgercontrasts_mirna)
                 dea_features = DEA.out.deaFeatures
