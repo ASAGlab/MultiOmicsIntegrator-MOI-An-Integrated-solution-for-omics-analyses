@@ -91,7 +91,6 @@ workflow GENES {
                 
                 DEA("genes",PREPROCESS_MATRIX.out.ch_count_matrix, params.input_genes,
                 params.alg_genes, 
-                params.cols_genes , params.rows_genes, 
                 params.batchdeseq2_genes, params.deseqFormula_genes,params.con1_genes,params.con2_genes, 
                 params.dgergroupingfactor_genes, params.edgerformulamodelmatrix_genes, params.edgercontrasts_genes)
                 dea_features = DEA.out.deaFeatures
