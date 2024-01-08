@@ -155,6 +155,7 @@ workflow ALIGNASSEMBLYGENES {
     ch_pseudoaligner_pca_multiqc        = Channel.empty()
     ch_pseudoaligner_clustering_multiqc = Channel.empty()
     ch_salmon_results                   = Channel.empty()
+    ch_salmon_fasta                     = Channel.empty()
     counts_gene_tximport                = Channel.empty()
     counts_from_abundance_tximport      = Channel.empty()
     salmon_dgelistRdata_tximport        = Channel.empty()
