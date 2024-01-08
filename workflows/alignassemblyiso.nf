@@ -159,6 +159,7 @@ workflow ALIGNASSEMBLYISO {
     ch_pseudoaligner_clustering_multiqc = Channel.empty()
     ch_salmon_results                   = Channel.empty()
     ch_salmon_fasta                     = Channel.empty()
+    ch_salmon_outfiles                   = Channel.empty()
     if (!params.skip_pseudo_alignment_isoforms && params.pseudo_aligner_isoforms == 'salmon') {
         QUANTIFY_SALMON_ISO (
             fr,
